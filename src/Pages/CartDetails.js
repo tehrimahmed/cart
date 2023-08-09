@@ -14,14 +14,7 @@ export const CartDetails = () => {
 
       <section
         className='container mt-3'
-        style={{
-          maxWidth: '800px',
-          margin: 'auto',
-          boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
-          padding: '1rem',
-          borderRadius: '4px',
-        }}
-      >
+        style={{maxWidth: '800px', margin: 'auto', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)'}}>
       {cartItem && (
         <div className='itemdetails' style={{ display: 'flex', alignItems: 'center' }}>
           <div className='itemimage' style={{ flex: 1 }}>

@@ -1,6 +1,12 @@
-import { createStore } from 'redux';
-import rootred from './redux/reducers/Main';
+import { combineReducers, createStore } from 'redux';
+import { cartReducer } from './redux/reducers/Reducer';
+import AdminSliceReducer from './redux/AdminSlice'; 
 
-const store = createStore(rootred);
+const rootReducer = combineReducers({
+    cartReducer,
+    adminItems: AdminSliceReducer
+});
+
+const store = createStore(rootReducer);
 
 export default store;

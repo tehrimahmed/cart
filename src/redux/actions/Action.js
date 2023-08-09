@@ -4,3 +4,10 @@ export const addToCart = (item)=>{
         payload:item
     }
 }
+
+export const dltFromCart = (item) => {
+    return {
+        type: "DLT",
+        payload: item
+    }
+}

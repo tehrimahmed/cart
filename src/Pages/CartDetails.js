@@ -2,12 +2,15 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
 
 export const CartDetails = () => {
 
+  const cartItem = useSelector(state => state.cartItem?.cartItem);
+
   return (
     <div className='container mt-2'>
-      <h2 className='text-center'>Checkout</h2>
+      <h2 className='text-center'>Product Details</h2>
 
       <section
         className='container mt-3'
@@ -19,25 +22,20 @@ export const CartDetails = () => {
           borderRadius: '4px',
         }}
       >
+      {cartItem && (
         <div className='itemdetails' style={{ display: 'flex', alignItems: 'center' }}>
           <div className='itemimage' style={{ flex: 1 }}>
-            <img
-              src='https://media.istockphoto.com/id/172857632/photo/classic-taco-isolated-on-white-background-with-soft-shadow.jpg?s=612x612&w=0&k=20&c=zHrXyzfGMoBI_aPEI6uLe4Trv39j2uIkiW0qqj0vgs4='
-              style={{ height: '10rem', borderRadius: '2px' }} />
+            <img src={cartItem.image} style={{ height: '10rem', borderRadius: '2px' }} /> 
           </div>
           <div className='details'>
             <Table>
               <tr>
-                <th>
-                  <p><strong>Restaurant: </strong> Mexican House</p>
-                  <p><strong>Price: </strong> 350 Mex$</p>
-                  <p><strong>Total: </strong> 350 Mex$</p>
-                </th>
+                <td>
+                  <p><strong>Title: </strong>{cartItem.title}</p>
+                  <p><strong>Price: </strong>{cartItem.price} $</p> 
+                </td>
               </tr>
               <tr>
-                <td>
-                  <p><strong>Rating: </strong> <span style={{ background: "green", color: "#fff", padding: "2px 4px", borderRadius: "5px" }}>3.5 ★</span></p>
-                </td>
                 <td>
                   <p>
                     <strong>Remove from Cart: </strong>
@@ -50,8 +48,10 @@ export const CartDetails = () => {
             </Table>
           </div>
         </div>
-
+      )}
       </section>
     </div>
   );
 };
+
+export default CartDetails;

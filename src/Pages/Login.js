@@ -56,24 +56,10 @@ const Login = () => {
                         onChange={handlePasswordChange}
                     />
                     <div className="radio-group">
-                    <label>
-                        <input
-                            type="radio"
-                            value="customer"
-                            checked={role === 'customer'}
-                            onChange={handleRoleChange}
-                        />
-                        Customer
-                    </label>
-                    <label style={{marginLeft:"3rem"}}>
-                        <input
-                            type="radio"
-                            value="admin"
-                            checked={role === 'admin'}
-                            onChange={handleRoleChange}
-                        />
-                        Admin
-                    </label>
+                    <select className="form-control mb-3" value={role} onChange={handleRoleChange}>
+                        <option value="customer">Customer</option>
+                        <option value="admin">Admin</option>
+                    </select>
                     </div>
                     <div>
                     <button type="submit" style={{marginTop:"2rem"}} className="btn btn-warning btn-block">Login</button>

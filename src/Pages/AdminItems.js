@@ -61,9 +61,8 @@ const AdminItems = () => {
                         Logout
                     </NavLink>
                 </Button>
-                <h2 className='text-center' style={{ marginBottom: '2rem' }}><strong>Order Away!</strong></h2>
             </div>
-            <div className='row d-flex justify-content-center align-items-center' style={{ display: 'flex', gap: '20px' }}>
+            <div className='row d-flex justify-content-center align-items-center' style={{ display: 'flex', gap: '20px', marginTop:'5rem' }}>
                 {adminItems.map((element) => {
                     return (
                         <Card key={element.id} style={{ width: '20rem', height: '100%', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)', border: '1px solid rgba(0, 0, 0, 0.1)' }}>

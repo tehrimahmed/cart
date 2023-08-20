@@ -1,10 +1,15 @@
 import { combineReducers } from 'redux';
 import { cartReducer } from './Reducer';
-import cartItemReducer from './CartDetailsSlice'; 
+import cartItemReducer from './redux/CartDetailsSlice'; 
+import authReducer from './AuthSlice';
 
-const rootred = combineReducers({
+const rootReducer = combineReducers({
     cartReducer,
-    cartItem: cartItemReducer
+    cartItem: cartItemReducer,
+    auth: authReducer,
 });
 
-export default rootred;
+export default rootReducer;
+
+
+

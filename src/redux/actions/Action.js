@@ -11,3 +11,11 @@ export const dltFromCart = (item) => {
         payload: item
     }
 }
+
+export const updateQnty = (items) => {
+    return {
+        type: "UPDATE",
+        payload: items
+    };
+};
+

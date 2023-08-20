@@ -8,7 +8,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { dltFromCart } from '../../redux/actions/Action';
+import { dltFromCart, updateQnty } from '../../redux/actions/Action';
 
 export const Navibar = () => {
 
@@ -32,6 +32,20 @@ export const Navibar = () => {
             totalPrice += item.price * item.qnty;
         });
         setPrice(totalPrice);
+    };
+
+    const inc = (id) => {
+        const updatedQnty = retrieve.map((item) =>
+            item.id === id ? { ...item, qnty: item.qnty + 1 } : item
+        );
+        dispatch(updateQnty(updatedQnty));
+    };
+
+    const dec = (id) => {
+        const updatedQnty = retrieve.map((item) =>
+            item.id === id && item.qnty > 1 ? { ...item, qnty: item.qnty - 1 } : item
+        );
+        dispatch(updateQnty(updatedQnty));
     };
 
     return (
@@ -79,6 +93,21 @@ export const Navibar = () => {
                                                     <p style={{ marginBottom: '8px' }}><strong>{e.title}</strong></p>
                                                     <p style={{ marginBottom: '0' }}><strong>Price: </strong> {e.price} $</p>
                                                     <p style={{ marginBottom: '0' }}><strong>Quantity: </strong>{e.qnty}</p>
+                                                </div>
+                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    <button
+                                                        className="quantity-button"
+                                                        onClick={() => dec(e.id)}
+                                                    >
+                                                        -
+                                                    </button>
+                                                    <span style={{ margin: '8px' }}>{e.qnty}</span>
+                                                    <button
+                                                        className="quantity-button"
+                                                        onClick={() => inc(e.id)}
+                                                    >
+                                                        +
+                                                    </button>
                                                 </div>
                                             </td>
                                             <td style={{ paddingLeft: 60 }}>

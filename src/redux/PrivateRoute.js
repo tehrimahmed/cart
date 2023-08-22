@@ -3,8 +3,8 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 
 const isAuthenticated = () => {
-    const password = localStorage.getItem("password"); 
-    return password === "password"; 
+    const password = localStorage.getItem("password")
+    return password === "password"
   };
   
 const isAdmin = () => {

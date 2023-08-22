@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const [isLoggedIn, setLoggedIn] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('customer');
@@ -23,18 +22,14 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         if (role === 'customer' && username === 'username' && password === 'password') {
-            setLoggedIn(true);
             navigate('/items');
         } else if (role === 'admin' && username === 'username' && password === 'password') {
-            setLoggedIn(true);
+            localStorage.setItem('role', 'admin'); 
+            localStorage.setItem('password', password); 
             navigate('/admin');
         }
     };
 
-
-    if (isLoggedIn) {
-        return null;
-    }
 
     return (
         <div className="container d-flex justify-content-center align-items-center vh-100">
